@@ -1,0 +1,62 @@
+body {
+    margin: 0;
+    font-family: "Ubuntu";
+    font-size: 22px;
+    text-align: center;
+}
+
+#todoText {
+    width: 300px;
+    height: 31px;
+    border-color: #41b883;
+    border-style: double;
+    border-radius: 6px;
+}
+
+#addButton {
+    width: 37px;
+    height: 37px;
+    color: white;
+    border: 0;
+    border-radius: 6px;
+}
+.btn{
+    margin: 2px;
+}
+.delButton {
+    width: 37px;
+    height: 37px;
+    color: white;
+    border: 0;
+    border-radius: 6px;
+}
+
+.doneButton {
+    width: 37px;
+    height: 37px;
+    color: white;
+    border: 0;
+    border-radius: 6px;
+}
+
+#todoTable {
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+#finishedTable {
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+table,
+th,
+td {
+    padding: 5px;
+    border: 1px solid black;
+    border-collapse: collapse;
+}

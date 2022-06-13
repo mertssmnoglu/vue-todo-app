@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="tr_TR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VueJS To Do App</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+</head>
+
+<body>
+    <div id="app">
+        <h1 id="title">{{ title }} </h1>
+        <div id="todoInput">
+            <input type="text" id="todoText" v-model="todoText" />
+            <button id="addButton" @click="addTodo">➕</button>
+        </div>
+        <table id="todoTable">
+            <h3>Eklenen Görevler</h3>
+            <tr>
+                <th>ID</th>
+                <th>Görev Adı</th>
+                <th>Eklenme Saati</th>
+                <th>Eylem</th>
+            </tr>
+            <tr v-for="todo in todoList" :key="todo">
+                <td>{{todo.id}}</td>
+                <td>{{todo.todo}}</td>
+                <td>{{todo.time}}</td>
+                <td><button class="btn doneButton" @click="markAsDone(todo.id)">✅</button><button class="btn delButton" @click="removeTodo(todo.id)">🗑️</button></td>
+            </tr>
+        </table>
+        <table id="finishedTable">
+            <h3>Bitirilen Görevler</h3>
+            <tr>
+                <th>ID</th>
+                <th>Görev Adı</th>
+                <th>Eklenme Saati</th>
+                <th>Eylem</th>
+            </tr>
+            <tr v-for="finished in finishedList" :key="finished">
+                <td>{{finished.id}}</td>
+                <td>{{finished.todo}}</td>
+                <td>{{finished.time}}</td>
+                <td><button class="btn delButton" @click="removeFinished(finished.id)">🗑️</button></td>
+            </tr>
+        </table>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
