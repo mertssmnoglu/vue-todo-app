@@ -2,7 +2,7 @@
 
  Simple To Do Application made with VueJs as a tutorial. 
 
-<a target="_blank" href="https://mertsismanoglu.com/projects/vue-todo-app/"> LIVE DEMO</a>
+[LIVE DEMO](https://mertsismanoglu.com/projects/vue-todo-app/)
 
 ![VueJS To Do App Preview](./preview.png)
 
