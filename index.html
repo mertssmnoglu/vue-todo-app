@@ -16,7 +16,7 @@
     <div id="app">
         <h1 id="title">{{ title }} </h1>
         <div id="todoInput">
-            <input type="text" id="todoText" v-model="todoText" />
+            <input type="text" @keyup.enter="addTodo" id="todoText" v-model="todoText" />
             <button id="addButton" @click="addTodo">➕</button>
         </div>
         <table id="todoTable">
