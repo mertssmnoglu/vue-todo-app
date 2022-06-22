@@ -10,26 +10,33 @@ const app = Vue.createApp({
         }
     },
     mounted() {
+        let localNewTodoId = localStorage.getItem('newTodoId')
+        if (localNewTodoId == null) localStorage.setItem('newTodoId', 1)
         let localTodoList = JSON.parse(localStorage.getItem('todoList'))
-        if (localTodoList == null) return localStorage.setItem('todoList', JSON.stringify([]))
-        if (localTodoList.length != 0) {
+        if (localTodoList == null) localStorage.setItem('todoList', JSON.stringify([]))
+        else if (localTodoList.length != 0) {
             JSON.parse(localStorage.getItem('todoList')).forEach(element => {
                 this.todoList.push(element)    
             });
         }
     },
     methods: {
-        async addTodo() {
+        addTodo() {
             if (this.todoText == null) {
                 alert("Bir görev eklemeyi unutmayın.")
             }
             else {
+                this.newTodoId = localStorage.getItem('newTodoId')
                 let todoData = { id: this.newTodoId, todo: this.todoText, time: this.currentTime() }
                 this.todoList.push(todoData)
+                
                 let localTodoList = JSON.parse(localStorage.getItem('todoList'))
                 localTodoList.push(todoData)
                 localStorage.setItem('todoList', JSON.stringify(localTodoList))
+                
                 this.newTodoId++
+                localStorage.setItem('newTodoId', this.newTodoId)
+                
                 this.todoText = null
             }
         },
