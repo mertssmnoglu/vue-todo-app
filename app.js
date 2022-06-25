@@ -16,7 +16,14 @@ const app = Vue.createApp({
         if (localTodoList == null) localStorage.setItem('todoList', JSON.stringify([]))
         else if (localTodoList.length != 0) {
             JSON.parse(localStorage.getItem('todoList')).forEach(element => {
-                this.todoList.push(element)    
+                this.todoList.push(element)
+            });
+        }
+        let localFinishedList = JSON.parse(localStorage.getItem('finishedList'))
+        if (localFinishedList == null) localStorage.setItem('finishedList', JSON.stringify([]))
+        else if (localFinishedList.length != 0) {
+            JSON.parse(localStorage.getItem('finishedList')).forEach(element => {
+                this.finishedList.push(element)
             });
         }
     },
@@ -29,21 +36,18 @@ const app = Vue.createApp({
                 this.newTodoId = localStorage.getItem('newTodoId')
                 let todoData = { id: this.newTodoId, todo: this.todoText, time: this.currentTime() }
                 this.todoList.push(todoData)
-                
                 let localTodoList = JSON.parse(localStorage.getItem('todoList'))
                 localTodoList.push(todoData)
                 localStorage.setItem('todoList', JSON.stringify(localTodoList))
-                
                 this.newTodoId++
                 localStorage.setItem('newTodoId', this.newTodoId)
-                
                 this.todoText = null
             }
         },
         removeTodo(id) {
             let localTodoList = JSON.parse(localStorage.getItem('todoList'))
             localTodoList = localTodoList.filter(todo => todo.id !== id)
-            localStorage.setItem('todoList',JSON.stringify(localTodoList))
+            localStorage.setItem('todoList', JSON.stringify(localTodoList))
             this.todoList = localTodoList
         },
         markAsDone(id) {
@@ -52,11 +56,16 @@ const app = Vue.createApp({
                 if (element.id == id) {
                     this.finishedList.push(element)
                     this.removeTodo(id)
+                    let localFinishedList = JSON.parse(localStorage.getItem('finishedList'))
+                    localFinishedList.push(element)
+                    localStorage.setItem('finishedList', JSON.stringify(localFinishedList))
                 }
             }
         },
         removeFinished(id) {
             this.finishedList = this.finishedList.filter(finished => finished.id !== id)
+            let localFinishedList = JSON.parse(localStorage.getItem('finishedList')).filter(finished => finished.id !== id)
+            localStorage.setItem('finishedList', JSON.stringify(localFinishedList))
         },
         currentTime() {
             const current = new Date();
