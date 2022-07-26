@@ -2,7 +2,7 @@
 
  Simple To Do Application made with VueJs as a tutorial. 
 
-[LIVE DEMO](https://mertsismanoglu.com/projects/vue-todo-app/)
+[LIVE DEMO](https://mertssmnoglu.github.io/vue-todo-app/)
 
 ![VueJS To Do App Preview](./preview.png)
 
